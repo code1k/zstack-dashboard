@@ -122,7 +122,7 @@
                     <li><a href ng-click="changeLanguage('Chinese (Traditional)')">繁体中文</a></li>
                 </ul>
             </li>
-            <li class="dropdown" ng-show="isLogin()"> 
+            <li class="dropdown" ng-show="isLogin()">
                 <a href class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-lg fa-user"></i>
                     {{getAccountName()}}
@@ -132,10 +132,15 @@
                     <li><a href ng-click="logout()">{{"index.Sign Out" | translate}}</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="/#/onekey" class="dropdown-toggle" data-toggle="dropdown">
+                    一键创建
+                </a>
+            </li>
         </ul>
+
     </div>
 </nav>
-
 <div class="container-fluid col-sm-24">
     <div class="row">
         <div id="sidebar" class="col-sm-4" ng-show="isLogin()">
@@ -330,6 +335,34 @@
 -->
 <script src="{{ url_for('static', filename='js/ng-tags-input.js') }}"></script>
 <script src="{{ url_for('static', filename='app/app.js') }}"></script>
+<script src="{{ url_for('static', filename='app/01apiheader.js') }}"></script>
+<script src="{{ url_for('static', filename='app/02utils.js') }}"></script>
+<script src="{{ url_for('static', filename='app/03root.js') }}"></script>
+<script src="{{ url_for('static', filename='app/04controller.js') }}"></script>
+<script src="{{ url_for('static', filename='app/05nav.js') }}"></script>
+<script src="{{ url_for('static', filename='app/06zone.js') }}"></script>
+<script src="{{ url_for('static', filename='app/07cluster.js') }}"></script>
+<script src="{{ url_for('static', filename='app/08primarystorage.js') }}"></script>
+<script src="{{ url_for('static', filename='app/09l2network.js') }}"></script>
+<script src="{{ url_for('static', filename='app/10l3network.js') }}"></script>
+<script src="{{ url_for('static', filename='app/11backupstorage.js') }}"></script>
+<script src="{{ url_for('static', filename='app/11host.js') }}"></script>
+<script src="{{ url_for('static', filename='app/12image.js') }}"></script>
+<script src="{{ url_for('static', filename='app/13instanceoffering.js') }}"></script>
+<script src="{{ url_for('static', filename='app/14diskoffering.js') }}"></script>
+<script src="{{ url_for('static', filename='app/15apidetails.js') }}"></script>
+<script src="{{ url_for('static', filename='app/16vminstance.js') }}"></script>
+<script src="{{ url_for('static', filename='app/17volume.js') }}"></script>
+<script src="{{ url_for('static', filename='app/18securitygroup.js') }}"></script>
+<script src="{{ url_for('static', filename='app/19vip.js') }}"></script>
+<script src="{{ url_for('static', filename='app/20eip.js') }}"></script>
+<script src="{{ url_for('static', filename='app/21portforwarding.js') }}"></script>
+<script src="{{ url_for('static', filename='app/22virtualrouter.js') }}"></script>
+<script src="{{ url_for('static', filename='app/23virtualrouteroffering.js') }}"></script>
+<script src="{{ url_for('static', filename='app/24dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='app/25globalconfig.js') }}"></script>
+<script src="{{ url_for('static', filename='app/26directive.js') }}"></script>
+<script src="{{ url_for('static', filename='app/27onekey.js') }}"></script>
 </body>
 
 </html>
