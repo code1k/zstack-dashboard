@@ -1,5 +1,14 @@
 <div style="display: none">
-    <div z-create-cluster="winNewCluster" z-options="optionsCreateCluster"></div>
+    <div z-one-key-create-cluster="winNewCluster" z-options="optionsCreateCluster"></div>
+    <div z-one-key-create-host="winNewHost" z-options="optionsCreateHost"></div>
+    <div z-one-key-create-primary-storage="winNewPrimaryStorage" z-options="optionsCreatePrimaryStorage"></div>
+    <div z-one-key-create-backup-storage="winNewBackupStorage" z-options="optionsCreateBackupStorage"></div>
+    <div z-one-key-create-image="winNewImage" z-options="optionsCreateImage"></div>
+    <div z-one-key-create-l2-network="winNewL2Network" z-options="optionsCreateL2Network"></div>
+    <div z-one-key-create-l3-network="winNewL3Network" z-options="optionsCreateL3Network"></div>
+    <div z-one-key-create-instance-offering="winNewInstanceOffering" z-options="optionsCreateInstanceOffering"></div>
+    <div z-one-key-create-disk-offering="winNewDiskOffering" z-options="optionsCreateDiskOffering"></div>
+    <div z-one-key-create-vm-instance="winNewVmInstance" z-options="optionsCreateVmInstance"></div>
 </div>
 <div style="display: none">
     <div kendo-window="winNewZone" k-visible="false" k-options="optionsNewZone">
@@ -31,4 +40,40 @@
 <button type="button" class="btn btn-success btn-sm" style="margin-left: 20px" ng-click="funcCreateCluster(winNewCluster)">
     <i class="fa fa-plus"></i>
     <span>&nbsp; {{"cluster.cluster.New Cluster" | translate}}</span>
+</button>
+<button type="button" class="btn btn-success btn-sm" style="margin-left: 20px" ng-click="funcCreateHost(winNewHost)">
+    <i class="fa fa-plus"></i>
+    <span>&nbsp; {{"host.host.New Host" | translate}}</span>
+</button>
+<button type="button" class="btn btn-success btn-sm" style="margin-left: 20px" ng-click="funcCreatePrimaryStorage(winNewPrimaryStorage)">
+    <i class="fa fa-plus"></i>
+    <span>&nbsp; {{ "primaryStorage.primaryStorage.New Primary Storage" | translate }}</span>
+</button>
+<button type="button" class="btn btn-success btn-sm" style="margin-left: 20px" ng-click="funcCreateBackupStorage(winNewBackupStorage)">
+    <i class="fa fa-plus"></i>
+    <span>&nbsp; {{ "backupStorage.backupStorage.New Backup Storage" | translate }}</span>
+</button>
+<button type="button" class="btn btn-success btn-sm" style="margin-left: 20px" ng-click="funcCreateImage(winNewImage)">
+    <i class="fa fa-plus"></i>
+    <span>&nbsp; {{"image.image.New Image" | translate}}</span>
+</button>
+<button type="button" class="btn btn-success btn-sm" style="margin-left: 20px" ng-click="funcCreateL2Network(winNewL2Network)">
+    <i class="fa fa-plus"></i>
+    <span>&nbsp; {{"l2Network.l2Network.New L2 Network" | translate}}</span>
+</button>
+<button type="button" class="btn btn-success btn-sm" style="margin-left: 20px" ng-click="funcCreateL3Network(winNewL3Network)">
+    <i class="fa fa-plus"></i>
+    <span>&nbsp; {{"l3Network.l3Network.New L3 Network" | translate}}</span>
+</button>
+<button type="button" class="btn btn-success btn-sm" style="margin-left: 20px" ng-click="funcCreateInstanceOffering(winNewInstanceOffering)">
+    <i class="fa fa-plus"></i>
+    <span>&nbsp; {{"instanceOffering.instanceOffering.New Instance Offering" | translate}}</span>
+</button>
+<button type="button" class="btn btn-success btn-sm" style="margin-left: 20px" ng-click="funcCreateDiskOffering(winNewDiskOffering)">
+    <i class="fa fa-plus"></i>
+    <span>&nbsp; {{"diskOffering.diskOffering.New Disk Offering" | translate}}</span>
+</button>
+<button type="button" class="btn btn-success btn-sm" style="margin-left: 20px" ng-click="funcCreateVmInstance(winNewVmInstance)">
+    <i class="fa fa-plus"></i>
+    <span>&nbsp; {{"vm.vm.New VmInstance" | translate}}</span>
 </button>

@@ -5,6 +5,7 @@ var MCluster;
         function Cluster() {
             return _super !== null && _super.apply(this, arguments) || this;
         }
+
         Cluster.prototype.progressOn = function () {
             this.inProgress = true;
         };
@@ -57,6 +58,7 @@ var MCluster;
             this.api = api;
             this.$rootScope = $rootScope;
         }
+
         ClusterManager.prototype.setSortBy = function (sortBy) {
             this.sortBy = sortBy;
         };
@@ -104,7 +106,9 @@ var MCluster;
         };
         ClusterManager.prototype.detachPrimaryStorage = function (cluster, ps, done) {
             var _this = this;
-            if (done === void 0) { done = null; }
+            if (done === void 0) {
+                done = null;
+            }
             cluster.progressOn();
             var msg = new ApiHeader.APIDetachPrimaryStorageFromClusterMsg();
             msg.primaryStorageUuid = ps.uuid;
@@ -122,7 +126,9 @@ var MCluster;
         };
         ClusterManager.prototype.attachPrimaryStorage = function (cluster, ps, callback) {
             var _this = this;
-            if (callback === void 0) { callback = null; }
+            if (callback === void 0) {
+                callback = null;
+            }
             cluster.progressOn();
             var msg = new ApiHeader.APIAttachPrimaryStorageToClusterMsg();
             msg.clusterUuid = cluster.uuid;
@@ -140,7 +146,9 @@ var MCluster;
         };
         ClusterManager.prototype.attachL2Network = function (cluster, l2, done) {
             var _this = this;
-            if (done === void 0) { done = null; }
+            if (done === void 0) {
+                done = null;
+            }
             cluster.progressOn();
             var msg = new ApiHeader.APIAttachL2NetworkToClusterMsg();
             msg.clusterUuid = cluster.uuid;
@@ -158,7 +166,9 @@ var MCluster;
         };
         ClusterManager.prototype.detachL2Network = function (cluster, l2, done) {
             var _this = this;
-            if (done === void 0) { done = null; }
+            if (done === void 0) {
+                done = null;
+            }
             cluster.progressOn();
             var msg = new ApiHeader.APIDetachL2NetworkFromClusterMsg();
             msg.clusterUuid = cluster.uuid;
@@ -228,6 +238,7 @@ var MCluster;
             _this.current = new Cluster();
             return _this;
         }
+
         return ClusterModel;
     }(Utils.Model));
     MCluster.ClusterModel = ClusterModel;
@@ -279,13 +290,16 @@ var MCluster;
             };
             return _this;
         }
+
         return OClusterGrid;
     }(Utils.OGrid));
+    MCluster.OClusterGrid = OClusterGrid;
     var Action = (function () {
         function Action($scope, clusterMgr) {
             this.$scope = $scope;
             this.clusterMgr = clusterMgr;
         }
+
         Action.prototype.enable = function () {
             this.clusterMgr.enable(this.$scope.model.current);
         };
@@ -355,6 +369,7 @@ var MCluster;
                 }
             });
         }
+
         FilterBy.prototype.confirm = function (popover) {
             console.log(JSON.stringify(this.toKendoFilter()));
             this.$scope.oClusterGrid.setFilter(this.toKendoFilter());
@@ -715,10 +730,11 @@ var MCluster;
                 })
             };
         }
+
         DetailsController.prototype.loadSelf = function (uuid) {
             var _this = this;
             var qobj = new ApiHeader.QueryObject();
-            qobj.addCondition({ name: 'uuid', op: '=', value: uuid });
+            qobj.addCondition({name: 'uuid', op: '=', value: uuid});
             this.clusterMgr.query(qobj, function (clusters, total) {
                 _this.$scope.model.current = clusters[0];
             });
@@ -871,6 +887,7 @@ var MCluster;
                 }
             };
         }
+
         return Controller;
     }());
     Controller.$inject = ['$scope', 'ClusterManager', 'hypervisorTypes', '$location', 'HostManager'];
@@ -878,6 +895,7 @@ var MCluster;
     var CreateClusterOptions = (function () {
         function CreateClusterOptions() {
         }
+
         return CreateClusterOptions;
     }());
     MCluster.CreateClusterOptions = CreateClusterOptions;
@@ -1059,13 +1077,13 @@ var MCluster;
                     }
                 });
                 $scope.zoneList = {
-                    dataSource: new kendo.data.DataSource({ data: [] }),
+                    dataSource: new kendo.data.DataSource({data: []}),
                     dataTextField: "name",
                     dataValueField: "uuid",
                     template: '<div style="color: black"><span class="z-label">{{"cluster.ts.Name" | translate}}</span>: #: name #</div>' + '<div style="color: black"><span class="z-label">{{"cluster.ts.State" | translate}}</span>#: state #</div>' + '<div style="color: black"><span class="z-label">{{"cluster.ts.UUID" | translate}}</span> #: uuid #</div>'
                 };
                 $scope.hypervisorList = {
-                    dataSource: new kendo.data.DataSource({ data: [] }),
+                    dataSource: new kendo.data.DataSource({data: []}),
                     dataTextField: "type",
                     dataValueField: "type"
                 };
@@ -1078,7 +1096,7 @@ var MCluster;
                     resizable: false
                 };
                 $scope.primaryStorageListOptions__ = {
-                    dataSource: new kendo.data.DataSource({ data: [] }),
+                    dataSource: new kendo.data.DataSource({data: []}),
                     dataTextField: "name",
                     dataValueField: "uuid",
                     itemTemplate: '<div style="color: black"><span class="z-label">Name:</span><span>#: name #</span></div>' +
@@ -1087,7 +1105,7 @@ var MCluster;
                     '<div style="color: black"><span class="z-label">URL:</span><span>#: url #</span></div>'
                 };
                 $scope.l2NetworkListOptions__ = {
-                    dataSource: new kendo.data.DataSource({ data: [] }),
+                    dataSource: new kendo.data.DataSource({data: []}),
                     dataTextField: "name",
                     dataValueField: "uuid",
                     itemTemplate: '<div style="color: black"><span class="z-label">Name:</span><span>#: name #</span></div>' +
@@ -1101,6 +1119,7 @@ var MCluster;
             this.replace = true;
             this.templateUrl = '/static/templates/cluster/createCluster.html';
         }
+
         CreateCluster.prototype.queryPrimaryStorages = function (zoneUuid, done) {
             var qobj = new ApiHeader.QueryObject();
             qobj.conditions = [
@@ -1153,7 +1172,7 @@ var MCluster;
                 _this.api.getHypervisorTypes(function (hvTypes) {
                     var types = [];
                     angular.forEach(hvTypes, function (item) {
-                        types.push({ type: item });
+                        types.push({type: item});
                     });
                     _this.$scope.hypervisorList.dataSource.data(new kendo.data.ObservableArray(types));
                     _this.$scope.model.hypervisorType = hvTypes[0];
@@ -1170,6 +1189,7 @@ var MCluster;
     var AttachL2NetworkOptions = (function () {
         function AttachL2NetworkOptions() {
         }
+
         return AttachL2NetworkOptions;
     }());
     MCluster.AttachL2NetworkOptions = AttachL2NetworkOptions;
@@ -1189,7 +1209,7 @@ var MCluster;
                 _this.$scope = $scope;
                 $scope.uuid = null;
                 _this.l2NetworkListOptions = $scope.l2NetworkListOptions__ = {
-                    dataSource: new kendo.data.DataSource({ data: [] }),
+                    dataSource: new kendo.data.DataSource({data: []}),
                     dataTextField: "name",
                     dataValueField: "uuid",
                     itemTemplate: '<div style="color: black"><span class="z-label">Name:</span><span>#: name #</span></div>' +
@@ -1226,6 +1246,7 @@ var MCluster;
                 };
             };
         }
+
         ClusterAttachL2Network.prototype.open = function () {
             var _this = this;
             this.$scope.l2NetworkList__.value([]);
@@ -1259,6 +1280,7 @@ var MCluster;
     var DetachL2NetworkOptions = (function () {
         function DetachL2NetworkOptions() {
         }
+
         return DetachL2NetworkOptions;
     }());
     MCluster.DetachL2NetworkOptions = DetachL2NetworkOptions;
@@ -1278,7 +1300,7 @@ var MCluster;
                 _this.$scope = $scope;
                 $scope.uuid = null;
                 $scope.l2NetworkListOptions__ = {
-                    dataSource: new kendo.data.DataSource({ data: [] }),
+                    dataSource: new kendo.data.DataSource({data: []}),
                     dataTextField: "name",
                     dataValueField: "uuid",
                     itemTemplate: '<div style="color: black"><span class="z-label">Name:</span><span>#: name #</span></div>' +
@@ -1318,6 +1340,7 @@ var MCluster;
                 };
             };
         }
+
         ClusterDetachL2Network.prototype.open = function () {
             var _this = this;
             this.$scope.l2NetworkList__.value([]);
@@ -1346,6 +1369,7 @@ var MCluster;
     var AttachPrimaryStorageOptions = (function () {
         function AttachPrimaryStorageOptions() {
         }
+
         return AttachPrimaryStorageOptions;
     }());
     MCluster.AttachPrimaryStorageOptions = AttachPrimaryStorageOptions;
@@ -1365,7 +1389,7 @@ var MCluster;
                 _this.$scope = $scope;
                 $scope.uuid = null;
                 _this.primaryStorageListOptions = $scope.primaryStorageListOptions__ = {
-                    dataSource: new kendo.data.DataSource({ data: [] }),
+                    dataSource: new kendo.data.DataSource({data: []}),
                     dataTextField: "name",
                     dataValueField: "uuid",
                     itemTemplate: '<div style="color: black"><span class="z-label">Name:</span><span>#: name #</span></div>' +
@@ -1402,6 +1426,7 @@ var MCluster;
                 };
             };
         }
+
         ClusterAttachPrimaryStorage.prototype.open = function () {
             var _this = this;
             this.$scope.primaryStorageList__.value([]);
@@ -1435,6 +1460,7 @@ var MCluster;
     var DetachPrimaryStorageOptions = (function () {
         function DetachPrimaryStorageOptions() {
         }
+
         return DetachPrimaryStorageOptions;
     }());
     MCluster.DetachPrimaryStorageOptions = DetachPrimaryStorageOptions;
@@ -1454,7 +1480,7 @@ var MCluster;
                 _this.$scope = $scope;
                 $scope.uuid = null;
                 $scope.primaryStorageListOptions__ = {
-                    dataSource: new kendo.data.DataSource({ data: [] }),
+                    dataSource: new kendo.data.DataSource({data: []}),
                     dataTextField: "name",
                     dataValueField: "uuid",
                     itemTemplate: '<div style="color: black"><span class="z-label">Name:</span><span>#: name #</span></div>' +
@@ -1494,6 +1520,7 @@ var MCluster;
                 };
             };
         }
+
         ClusterDetachPrimaryStorage.prototype.open = function () {
             var _this = this;
             this.$scope.primaryStorageList__.value([]);
@@ -1554,7 +1581,7 @@ angular.module('root').factory('ClusterManager', ['Api', '$rootScope', function 
                 var defer = $q.defer();
                 var qobj = new ApiHeader.QueryObject();
                 var uuid = $route.current.params.uuid;
-                qobj.addCondition({ name: 'uuid', op: '=', value: uuid });
+                qobj.addCondition({name: 'uuid', op: '=', value: uuid});
                 ClusterManager.query(qobj, function (clusters, total) {
                     defer.resolve(clusters[0]);
                 });
